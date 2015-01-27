@@ -14,10 +14,8 @@ os.system('cls')
 		Aircraft Carrier (5 cells)
 		Battleship (4 cells)
 		Cruiser (3 cells)
-		Destroyer 1 (2 cells)
-		Destroyer 2 (2 cells)
-		Submarine 1 (1 cell)
-		Submarine 2 (1 cell)
+		Submarine (3 cells)
+		Destroyer (2 cells)
 	"""
 
 def initialize_board(board):
@@ -48,20 +46,18 @@ def shipname(ship): #convert ships cell to ship name
 		"Aircraft Carrier (5 cells)",
 		"BattleShip (4 cells)",
 		"Cruiser (3 cells)",
-		"Destroyer 1 (2 cells)",
-		"Destroyer 2 (2 cells)",
-		"Submarine 1 (1 cell)",
-		"Submarine 2 (1 cell)" ]
+		"Submarine (3 cells)",
+		"Destroyer (2 cells)"]
 	shipname = ""
 	shipname = shiplist[ship-1]
 	return shipname
 
 def player_setup(board): #Player places his ships
-	for i in range (1,8):
+	for i in range (1,6):
 		while True:
 			os.system('cls')
 			intro_banner()
-			ships = [5,4,3,2,2,1,1] #cell size of each of the ships
+			ships = [5,4,3,3,2] #cell size of each of the ships
 			ship_length = ships[i-1]
 			display_board(board)
 			print "-= PLAYER BOARD SETUP =-"
@@ -91,9 +87,9 @@ def player_setup(board): #Player places his ships
 	return board
 	
 def AI_setup(board): #AI places ships
-	for i in range (1,8):
+	for i in range (1,6):
 		while True:
-			ships = [5,4,3,2,2,1,1] #cell size of each of the ships (+1 to help for/next iteration)
+			ships = [5,4,3,3,2] #cell size of each of the ships
 			ship_length = ships[i-1]
 			choice = choose_cell_AI() #Computer chooses coordinate
 			dir_pos = ["a","d"] #possible orientations: Across or Down
