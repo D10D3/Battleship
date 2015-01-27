@@ -20,50 +20,12 @@ os.system('cls')
 		Submarine 2 (1 cell)
 	"""
 
-def initialize_player(player_board): #initialize blank Player game board
-	player_board = {
-		"A0":"-","A1":"-","A2":"-","A3":"-","A4":"-","A5":"-","A6":"-","A7":"-","A8":"-","A9":"-",
-		"B0":"-","B1":"-","B2":"-","B3":"-","B4":"-","B5":"-","B6":"-","B7":"-","B8":"-","B9":"-",
-		"C0":"-","C1":"-","C2":"-","C3":"-","C4":"-","C5":"-","C6":"-","C7":"-","C8":"-","C9":"-",
-		"D0":"-","D1":"-","D2":"-","D3":"-","D4":"-","D5":"-","D6":"-","D7":"-","D8":"-","D9":"-",
-		"E0":"-","E1":"-","E2":"-","E3":"-","E4":"-","E5":"-","E6":"-","E7":"-","E8":"-","E9":"-",
-		"F0":"-","F1":"-","F2":"-","F3":"-","F4":"-","F5":"-","F6":"-","F7":"-","F8":"-","F9":"-",
-		"G0":"-","G1":"-","G2":"-","G3":"-","G4":"-","G5":"-","G6":"-","G7":"-","G8":"-","G9":"-",
-		"H0":"-","H1":"-","H2":"-","H3":"-","H4":"-","H5":"-","H6":"-","H7":"-","H8":"-","H9":"-",
-		"I0":"-","I1":"-","I2":"-","I3":"-","I4":"-","I5":"-","I6":"-","I7":"-","I8":"-","I9":"-",
-		"J0":"-","J1":"-","J2":"-","J3":"-","J4":"-","J5":"-","J6":"-","J7":"-","J8":"-","J9":"-",
-		}
-	return player_board
-
-def initialize_computer(computer_board):#initialize blank Computer game board
-	computer_board = {
-		"A0":"-","A1":"-","A2":"-","A3":"-","A4":"-","A5":"-","A6":"-","A7":"-","A8":"-","A9":"-",
-		"B0":"-","B1":"-","B2":"-","B3":"-","B4":"-","B5":"-","B6":"-","B7":"-","B8":"-","B9":"-",
-		"C0":"-","C1":"-","C2":"-","C3":"-","C4":"-","C5":"-","C6":"-","C7":"-","C8":"-","C9":"-",
-		"D0":"-","D1":"-","D2":"-","D3":"-","D4":"-","D5":"-","D6":"-","D7":"-","D8":"-","D9":"-",
-		"E0":"-","E1":"-","E2":"-","E3":"-","E4":"-","E5":"-","E6":"-","E7":"-","E8":"-","E9":"-",
-		"F0":"-","F1":"-","F2":"-","F3":"-","F4":"-","F5":"-","F6":"-","F7":"-","F8":"-","F9":"-",
-		"G0":"-","G1":"-","G2":"-","G3":"-","G4":"-","G5":"-","G6":"-","G7":"-","G8":"-","G9":"-",
-		"H0":"-","H1":"-","H2":"-","H3":"-","H4":"-","H5":"-","H6":"-","H7":"-","H8":"-","H9":"-",
-		"I0":"-","I1":"-","I2":"-","I3":"-","I4":"-","I5":"-","I6":"-","I7":"-","I8":"-","I9":"-",
-		"J0":"-","J1":"-","J2":"-","J3":"-","J4":"-","J5":"-","J6":"-","J7":"-","J8":"-","J9":"-",
-		}
-	return computer_board
-
-def initialize_hit(hit_board):#initialize blank board to displayer player shots
-	hit_board = {
-		"A0":"-","A1":"-","A2":"-","A3":"-","A4":"-","A5":"-","A6":"-","A7":"-","A8":"-","A9":"-",
-		"B0":"-","B1":"-","B2":"-","B3":"-","B4":"-","B5":"-","B6":"-","B7":"-","B8":"-","B9":"-",
-		"C0":"-","C1":"-","C2":"-","C3":"-","C4":"-","C5":"-","C6":"-","C7":"-","C8":"-","C9":"-",
-		"D0":"-","D1":"-","D2":"-","D3":"-","D4":"-","D5":"-","D6":"-","D7":"-","D8":"-","D9":"-",
-		"E0":"-","E1":"-","E2":"-","E3":"-","E4":"-","E5":"-","E6":"-","E7":"-","E8":"-","E9":"-",
-		"F0":"-","F1":"-","F2":"-","F3":"-","F4":"-","F5":"-","F6":"-","F7":"-","F8":"-","F9":"-",
-		"G0":"-","G1":"-","G2":"-","G3":"-","G4":"-","G5":"-","G6":"-","G7":"-","G8":"-","G9":"-",
-		"H0":"-","H1":"-","H2":"-","H3":"-","H4":"-","H5":"-","H6":"-","H7":"-","H8":"-","H9":"-",
-		"I0":"-","I1":"-","I2":"-","I3":"-","I4":"-","I5":"-","I6":"-","I7":"-","I8":"-","I9":"-",
-		"J0":"-","J1":"-","J2":"-","J3":"-","J4":"-","J5":"-","J6":"-","J7":"-","J8":"-","J9":"-",
-		}
-	return hit_board
+def initialize_board(board):
+	board = {}
+	for c in range(65,75):
+		for i in range(10):
+			board[chr(c) + str(i)] = '-'
+	return board
 
 def error(): #if I screwed up
 	print "D10D3, your code sucks again"
@@ -72,16 +34,13 @@ def error(): #if I screwed up
 def display_board(board): #displays selected board neatly
 	print "    0 1 2 3 4 5 6 7 8 9"
 	print "   ____________________"
-	print "A |"+" "+board["A0"]+" "+board["A1"]+" "+board["A2"]+" "+board["A3"]+" "+board["A4"]+" "+board["A5"]+" "+board["A6"]+" "+board["A7"]+" "+board["A8"]+" "+board["A9"]+"|"
-	print "B |"+" "+board["B0"]+" "+board["B1"]+" "+board["B2"]+" "+board["B3"]+" "+board["B4"]+" "+board["B5"]+" "+board["B6"]+" "+board["B7"]+" "+board["B8"]+" "+board["B9"]+"|"
-	print "C |"+" "+board["C0"]+" "+board["C1"]+" "+board["C2"]+" "+board["C3"]+" "+board["C4"]+" "+board["C5"]+" "+board["C6"]+" "+board["C7"]+" "+board["C8"]+" "+board["C9"]+"|"
-	print "D |"+" "+board["D0"]+" "+board["D1"]+" "+board["D2"]+" "+board["D3"]+" "+board["D4"]+" "+board["D5"]+" "+board["D6"]+" "+board["D7"]+" "+board["D8"]+" "+board["D9"]+"|"
-	print "E |"+" "+board["E0"]+" "+board["E1"]+" "+board["E2"]+" "+board["E3"]+" "+board["E4"]+" "+board["E5"]+" "+board["E6"]+" "+board["E7"]+" "+board["E8"]+" "+board["E9"]+"|"
-	print "F |"+" "+board["F0"]+" "+board["F1"]+" "+board["F2"]+" "+board["F3"]+" "+board["F4"]+" "+board["F5"]+" "+board["F6"]+" "+board["F7"]+" "+board["F8"]+" "+board["F9"]+"|"
-	print "G |"+" "+board["G0"]+" "+board["G1"]+" "+board["G2"]+" "+board["G3"]+" "+board["G4"]+" "+board["G5"]+" "+board["G6"]+" "+board["G7"]+" "+board["G8"]+" "+board["G9"]+"|"
-	print "H |"+" "+board["H0"]+" "+board["H1"]+" "+board["H2"]+" "+board["H3"]+" "+board["H4"]+" "+board["H5"]+" "+board["H6"]+" "+board["H7"]+" "+board["H8"]+" "+board["H9"]+"|"
-	print "I |"+" "+board["I0"]+" "+board["I1"]+" "+board["I2"]+" "+board["I3"]+" "+board["I4"]+" "+board["I5"]+" "+board["I6"]+" "+board["I7"]+" "+board["I8"]+" "+board["I9"]+"|"
-	print "J |"+" "+board["J0"]+" "+board["J1"]+" "+board["J2"]+" "+board["J3"]+" "+board["J4"]+" "+board["J5"]+" "+board["J6"]+" "+board["J7"]+" "+board["J8"]+" "+board["J9"]+"|"
+	for c in range(65,75):
+		char = chr(c)
+		pstr = char + " |"
+		for i in range(10):
+			pstr += " " + board[char + str(i)]
+		pstr += "|"
+		print pstr
 	print "  ----------------------"
 	
 def shipname(ship): #convert ships cell to ship name
@@ -247,19 +206,19 @@ def test_shot(selection,board): #checks if shot is valid
 	return test
 
 def write_ship(selection,board): #writes the (now checked) ship selection to the board
-	writecell = 0
+	# writecell = 0
 	for i in range(0,len(selection)): #creates loop based on length of selection
 		board[selection[i]] = "O"
 	return board
 	
 def intro_banner(): #fancy graphics
 	print"""
-	______  ___ _____ _____ _      _____ _____ _   _ ___________ 
-	| ___ \/ _ \_   _|_   _| |    |  ___/  ___| | | |_   _| ___ \       
+	______  ___ _____ _____ _      _____ _____ _   _ ___________
+	| ___ \/ _ \_   _|_   _| |    |  ___/  ___| | | |_   _| ___ \\
 	| |_/ / /_\ \| |   | | | |    | |__ \ `--.| |_| | | | | |_/ /
-	| ___ \  _  || |   | | | |    |  __| `--. \  _  | | | |  __/ 
-	| |_/ / | | || |   | | | |____| |___/\__/ / | | |_| |_| |    
-	\____/\_| |_/\_/   \_/ \_____/\____/\____/\_| |_/\___/\_|    
+	| ___ \  _  || |   | | | |    |  __| `--. \  _  | | | |  __/
+	| |_/ / | | || |   | | | |____| |___/\__/ / | | |_| |_| |
+	\____/\_| |_/\_/   \_/ \_____/\____/\____/\_| |_/\___/\_|
 	
 	Ver 0.9  by D10D3
 	"""
@@ -281,18 +240,18 @@ def did_anyone_win(p_board,c_board):
 			checkcell = letter + number
 			if p_board[checkcell] == "O":
 				o_count_player += 1
-			else:
-				fnord = "fnord"
+			# else:
+			# 	fnord = "fnord"
 			if c_board[checkcell] == "O":
 				o_count_computer += 1
-			else:
-				fnord = "fnord"
+			# else:
+			# 	fnord = "fnord"
 	if o_count_player == 0:
 		winner = "computer"
 	elif o_count_computer == 0:
 		winner = "player"
 	else:
-		winner = "null"
+		winner = None
 	return winner
 
 def win_lose(winner): #declare winner, ask if play again
@@ -305,9 +264,9 @@ def win_lose(winner): #declare winner, ask if play again
 	while True:
 		again = raw_input ('   Play Again? Y or N> ')
 		again.lower
-		if again == "y":
+		if again == "y" or again == "Y":
 			break
-		elif again == "n":
+		elif again == "n" or again == "N":
 			print "Thanks for playing!"
 			quit()
 		else:
@@ -335,9 +294,9 @@ intro_banner()
 player_board = {}
 computer_board = {}
 hit_board = {}
-player_board = initialize_player(player_board)
-computer_board = initialize_computer(computer_board)
-hit_board = initialize_hit(hit_board)
+player_board = initialize_board(player_board)
+computer_board = initialize_board(computer_board)
+hit_board = initialize_board(hit_board)
 player_board = man_or_ran(player_board)
 computer_board = AI_setup(computer_board)
 
@@ -346,16 +305,16 @@ computer_board = AI_setup(computer_board)
 while True:
 	while True: #did anyone win? if so play again?
 		winner = did_anyone_win(player_board,computer_board)
-		if winner == "player" and "computer":
+		if winner:
 			win_lose(winner)
 			os.system('cls')
 			intro_banner()
 			player_board = {}
 			computer_board = {}
 			hit_board = {}
-			player_board = initialize_player(player_board)
-			computer_board = initialize_computer(computer_board)
-			hit_board = initialize_hit(hit_board)
+			player_board = initialize_board(player_board)
+			computer_board = initialize_board(computer_board)
+			hit_board = initialize_board(hit_board)
 			player_board = man_or_ran(player_board)
 			computer_board = AI_setup(computer_board)
 			break
@@ -388,7 +347,7 @@ while True:
 				break
 			else:
 				computer_board[target] = "@"
-				print "You hit and enemy ship!"
+				print "You hit an enemy ship!"
 				hit_board[target] = "@"
 				break
 		else:
